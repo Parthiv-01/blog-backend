@@ -14,8 +14,3 @@ class BlogPostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = BlogPostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def get_permissions(self):
-        if self.request.method in ['PUT', 'PATCH', 'DELETE']:
-            return [permissions.IsAuthenticated()]
-        return super().get_permissions()
